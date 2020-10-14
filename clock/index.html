@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
+    <script>
+        const deg = 6;
+        const hr = document.querySelector('#hr');
+        const mn = document.querySelector('#mn');
+        const sc = document.querySelector('#sc');
+
+        // 定时器
+        setInterval(() => {
+            // 获取实时的时分秒
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
+            
+            // 计算时针、分针和秒针的度数（以0点为起始，Z轴为轴）
+            hr.style.transform = `rotateZ(${hh + (mm/12)}deg)`;
+            mn.style.transform = `rotateZ(${mm + (ss/60)}deg)`;
+            sc.style.transform = `rotateZ(${ss}deg)`;
+        });
+    
+    </script>
+</body>
+</html>
